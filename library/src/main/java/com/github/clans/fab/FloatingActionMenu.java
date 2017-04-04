@@ -13,7 +13,7 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.ContextThemeWrapper;
-import android.view.GestureDetector;
+import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,6 +52,7 @@ public class FloatingActionMenu extends ViewGroup {
     private int mButtonsCount;
     private boolean mMenuOpened;
     private boolean mIsMenuOpening;
+    private int mMenuGravity;
     private Handler mUiHandler = new Handler();
     private int mLabelsShowAnimation;
     private int mLabelsHideAnimation;
@@ -175,6 +176,11 @@ public class FloatingActionMenu extends ViewGroup {
             int padding = attr.getDimensionPixelSize(R.styleable.FloatingActionMenu_menu_labels_padding, 0);
             initPadding(padding);
         }
+
+        int[] set = {android.R.attr.foregroundGravity};
+        TypedArray tArray = context.obtainStyledAttributes(attrs, set);
+        setMenuGravity(tArray.getInt(0, Gravity.START));
+        tArray.recycle();
 
         mOpenInterpolator = new OvershootInterpolator();
         mCloseInterpolator = new AnticipateInterpolator();
@@ -323,7 +329,12 @@ public class FloatingActionMenu extends ViewGroup {
 
             Label label = (Label) child.getTag(R.id.fab_label);
             if (label != null) {
-                int labelOffset = (mMaxButtonWidth - child.getMeasuredWidth()) / (mUsingMenuLabel ? 1 : 2);
+                int labelOffset;
+                if (mMenuGravity == Gravity.CENTER_HORIZONTAL || mMenuGravity == Gravity.CENTER)
+                    labelOffset = (MeasureSpec.getSize(widthMeasureSpec) / 2) - mMenuButton.getMeasuredWidth() / 2 - label.calculateShadowWidth() + mLabelsMargin;
+                else
+                    labelOffset = (mMaxButtonWidth - child.getMeasuredWidth()) / (mUsingMenuLabel ? 1 : 2);
+
                 int labelUsedWidth = child.getMeasuredWidth() + label.calculateShadowWidth() + mLabelsMargin + labelOffset;
                 measureChildWithMargins(label, widthMeasureSpec, labelUsedWidth, heightMeasureSpec, 0);
                 usedWidth += label.getMeasuredWidth();
@@ -349,9 +360,13 @@ public class FloatingActionMenu extends ViewGroup {
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        int buttonsHorizontalCenter = mLabelsPosition == LABELS_POSITION_LEFT
-                ? r - l - mMaxButtonWidth / 2 - getPaddingRight()
-                : mMaxButtonWidth / 2 + getPaddingLeft();
+        int buttonsHorizontalCenter;
+
+        if (mMenuGravity == Gravity.CENTER || mMenuGravity == Gravity.CENTER_HORIZONTAL) {
+            buttonsHorizontalCenter = (r - 1) / 2;
+        } else if (mMenuGravity == Gravity.RIGHT || mMenuGravity == Gravity.END)
+            buttonsHorizontalCenter = r - l - mMaxButtonWidth / 2 - getPaddingRight();
+        else buttonsHorizontalCenter = mMaxButtonWidth / 2 + getPaddingLeft();
         boolean openUp = mOpenDirection == OPEN_UP;
 
         int menuButtonTop = openUp
@@ -791,6 +806,10 @@ public class FloatingActionMenu extends ViewGroup {
         mMenuButton.setShowAnimation(showAnimation);
     }
 
+    public void setMenuGravity(int mMenuGravity) {
+        this.mMenuGravity = mMenuGravity;
+    }
+
     public void setMenuButtonHideAnimation(Animation hideAnimation) {
         mMenuButtonHideAnimation = hideAnimation;
         mMenuButton.setHideAnimation(hideAnimation);
@@ -972,7 +991,7 @@ public class FloatingActionMenu extends ViewGroup {
 
     public void removeAllMenuButtons() {
         close(true);
-        
+
         List<FloatingActionButton> viewsToRemove = new ArrayList<>();
         for (int i = 0; i < getChildCount(); i++) {
             View v = getChildAt(i);
