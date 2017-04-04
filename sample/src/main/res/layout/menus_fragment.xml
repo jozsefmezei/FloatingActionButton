@@ -40,6 +40,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="80dp"
         android:layout_marginTop="10dp"
+        android:gravity="right"
         android:visibility="invisible"
         fab:menu_animationDelayPerItem="0"
         fab:menu_colorNormal="#FFB805"
@@ -86,6 +87,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="150dp"
         android:layout_marginTop="10dp"
+        android:gravity="right"
         android:visibility="invisible"
         fab:menu_animationDelayPerItem="0"
         fab:menu_colorNormal="#43A047"
@@ -128,6 +130,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="220dp"
         android:layout_marginTop="10dp"
+        android:gravity="right"
         android:visibility="invisible"
         fab:menu_colorNormal="#1565C0"
         fab:menu_colorPressed="#2272CD"
@@ -180,6 +183,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginTop="65dp"
         android:elevation="6dp"
+        android:gravity="right"
         android:paddingBottom="10dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
@@ -226,6 +230,7 @@
         fab:menu_backgroundColor="#ccffffff"
         fab:menu_fab_label="Menu label"
         fab:menu_labels_ellipsize="end"
+
         fab:menu_labels_singleLine="true">
 
         <com.github.clans.fab.FloatingActionButton
@@ -259,7 +264,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
-        android:foregroundGravity="center_horizontal"
+        android:gravity="center"
         android:paddingBottom="10dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"

@@ -1,5 +1,4 @@
 # FloatingActionButton
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.clans/fab/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.clans/fab) [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Clans%2FFloatingActionButton-blue.svg?style=flat)](http://android-arsenal.com/details/1/1684)
 
 Yet another implementation of [Floating Action Button](http://www.google.com/design/spec/components/buttons.html#buttons-floating-action-button) for Android with lots of features.
 
@@ -11,9 +10,12 @@ Watch a short **[Demo Video](https://youtu.be/XngUY3PN1IQ)** on YouTube or try i
 Sample APK can be found in **[Releases](https://github.com/Clans/FloatingActionButton/releases)** section.
 
 # Screenshots
-![Main screen](/screenshots/main_screen.png) ![Menu closed](/screenshots/menu_closed.png) ![Menu default opened](/screenshots/menu_default_opened.png) ![Menu custom opened](/screenshots/menu_custom_opened.png) ![Menu mini opened](/screenshots/menu_mini_opened.png) ![Menu right opened](/screenshots/menu_right_opened.png) ![Menu down opened](/screenshots/menu_down_opened.png) ![Progress background](/screenshots/progress_background.png) ![Progress no background](/screenshots/progress_no_background.png)
+![Main screen](/screenshots/main_screen.png) ![Menu closed](/screenshots/menu_closed.png) ![Menu default opened](/screenshots/menu_default_opened.png) ![Menu custom opened](/screenshots/menu_custom_opened.png) ![Menu custom gravity](/screenshots/menu_custom_gravity.png) ![Menu mini opened](/screenshots/menu_mini_opened.png) ![Menu right opened](/screenshots/menu_right_opened.png) ![Menu down opened](/screenshots/menu_down_opened.png) ![Progress background](/screenshots/progress_background.png) ![Progress no background](/screenshots/progress_no_background.png)
 
 # Features
+- Added Gravity option to Floating Action Menu
+
+# Previous Features
 - Ripple effect on Android Lollipop devices
 - Option to set custom **normal**/**pressed**/**ripple** colors
 - Option to set custom shadow color and offsets
@@ -31,10 +33,19 @@ Sample APK can be found in **[Releases](https://github.com/Clans/FloatingActionB
 - *Option to set a label for the `FloatingActionMenu`'s button*
 
 # Usage
-Add a dependency to your `build.gradle`:
+Add a dependency to your `build.gradle` in root directory:
+```
+allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+}
+```
+Add a dependency to your `build.gradle` in your project directory:
 ```
 dependencies {
-    compile 'com.github.clans:fab:1.6.3'
+    compile 'https://github.com/jozsefmezei/FloatingActionButton:1.6.4'
 }
 ```
 Add the `com.github.clans.fab.FloatingActionButton` to your layout XML file.
@@ -109,6 +120,7 @@ Here are all the **FloatingActionMenu**'s xml attributes with their **default va
         android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="10dp"
+        android:gravity="center"
         fab:menu_fab_size="normal"
         fab:menu_showShadow="true"
         fab:menu_shadowColor="#66000000"

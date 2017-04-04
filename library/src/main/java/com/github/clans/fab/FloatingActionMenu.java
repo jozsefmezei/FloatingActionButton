@@ -177,7 +177,7 @@ public class FloatingActionMenu extends ViewGroup {
             initPadding(padding);
         }
 
-        int[] set = {android.R.attr.foregroundGravity};
+        int[] set = {android.R.attr.gravity};
         TypedArray tArray = context.obtainStyledAttributes(attrs, set);
         setMenuGravity(tArray.getInt(0, Gravity.START));
         tArray.recycle();
