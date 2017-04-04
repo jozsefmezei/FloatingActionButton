@@ -10,7 +10,7 @@ Watch a short **[Demo Video](https://youtu.be/XngUY3PN1IQ)** on YouTube or try i
 Sample APK can be found in **[Releases](https://github.com/Clans/FloatingActionButton/releases)** section.
 
 # Screenshots
-![Main screen](/screenshots/main_screen.png) ![Menu closed](/screenshots/menu_closed.png) ![Menu default opened](/screenshots/menu_default_opened.png) ![Menu custom opened](/screenshots/menu_custom_opened.png) ![Menu custom gravity](/screenshots/menu_custom_gravity.png) ![Menu mini opened](/screenshots/menu_mini_opened.png) ![Menu right opened](/screenshots/menu_right_opened.png) ![Menu down opened](/screenshots/menu_down_opened.png) ![Progress background](/screenshots/progress_background.png) ![Progress no background](/screenshots/progress_no_background.png)
+![Main screen](/screenshots/main_screen.png) ![Menu closed](/screenshots/menu_closed.png) ![Menu default opened](/screenshots/menu_default_opened.png) ![Menu custom opened](/screenshots/menu_custom_opened.png) ![Menu custom gravity](/screenshots/menu_custom_gravity.png) ![Menu mini opened](/screenshots/menu_mini_opened.png) ![Menu right opened](/screenshots/menu_right_opened.png) ![Menu down opened](/screenshots/menu_down_opened.png) ![Progress background](/screenshots/progress_background.png)
 
 # Features
 - Added Gravity option to Floating Action Menu
