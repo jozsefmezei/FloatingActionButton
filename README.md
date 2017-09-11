@@ -45,7 +45,7 @@ allprojects {
 Add a dependency to your `build.gradle` in your project directory:
 ```
 dependencies {
-    compile 'https://github.com/jozsefmezei/FloatingActionButton:v1.6.5'
+    compile 'com.github.jozsefmezei:FloatingActionButton:v1.6.5'
 }
 ```
 Add the `com.github.clans.fab.FloatingActionButton` to your layout XML file.
